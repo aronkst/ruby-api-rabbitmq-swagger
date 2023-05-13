@@ -41,7 +41,7 @@ The API project has been tested using the RSpec library for unit testing. The te
 
 To run the project, you need to have Docker and Docker Compose installed on your machine. Once you have these tools installed, follow these steps:
 
-1. Clone the project repository: `git clone https://github.com/your-username/ruby-api-rabbitmq-swagger.git`
+1. Clone the project repository: `git clone https://github.com/aronkst/ruby-api-rabbitmq-swagger.git`
 2. Navigate to the project directory: `cd ruby-api-rabbitmq-swagger`
 3. Start the services: `make start`
 4. Access the API documentation in your browser at http://localhost:8080/
