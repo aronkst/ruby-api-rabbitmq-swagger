@@ -1,0 +1,142 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Message API"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Returns all messages",
+        "description": "Returns all messages in JSON format",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Message list",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "description": "Message ID"
+                  },
+                  "content": {
+                    "type": "string",
+                    "description": "Message content"
+                  },
+                  "status": {
+                    "type": "boolean",
+                    "description": "Message status"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Add a new message",
+        "description": "Add a new message",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Message",
+            "description": "Message content",
+            "schema": {
+              "type": "object",
+              "required": [
+                "content"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "description": "Message content"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Message created successfully",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "description": "Created message ID"
+                },
+                "content": {
+                  "type": "string",
+                  "description": "Created message content"
+                },
+                "status": {
+                  "type": "boolean",
+                  "description": "Created message status"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{id}": {
+      "get": {
+        "summary": "Returns a message by ID",
+        "description": "Returns a specific message by ID in JSON format",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "Message ID to be returned"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Message found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "description": "Message ID"
+                },
+                "content": {
+                  "type": "string",
+                  "description": "Message content"
+                },
+                "status": {
+                  "type": "boolean",
+                  "description": "Message status"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Message not found"
+          }
+        }
+      }
+    }
+  }
+}
